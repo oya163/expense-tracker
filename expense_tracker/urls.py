@@ -7,4 +7,5 @@ from . import views
 urlpatterns = [
     path("expensetypes/", views.ExpenseTypeList.as_view()),
     path("expenses/<slug:user_id>", views.ExpenseList.as_view()),
+    path("expensesdetail/<slug:user_id>", views.ExpenseDetail.as_view()),
 ]

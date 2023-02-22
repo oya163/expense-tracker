@@ -22,21 +22,8 @@ class ExpenseTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ExpenseSerializerRead(serializers.ModelSerializer):
+class ExpenseSerializer(serializers.ModelSerializer):
     """ExpenseSerializer"""
-
-    # user = UserSerializer(read_only=True)
-    expensetype = ExpenseTypeSerializer(read_only=True)
-
-    class Meta:
-        model = Expense
-        fields = "__all__"
-
-
-class ExpenseSerializerWrite(serializers.ModelSerializer):
-    """ExpenseSerializer"""
-
-    expensetype = ExpenseTypeSerializer
 
     class Meta:
         model = Expense
