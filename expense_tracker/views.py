@@ -2,8 +2,15 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+
+
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.serializers import TokenVerifySerializer
 
 from django.http import Http404
+from django.contrib.auth.models import User
 
 from .models import Expense, ExpenseType
 from .serializers import (
@@ -20,7 +27,11 @@ class ExpenseTypeList(APIView):
 
 
 class ExpenseList(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, user_id, format=None):
+        # token = request.META.get("HTTP_AUTHORIZATION", " ").split(" ")[1]
         expenses = Expense.objects.all().filter(user_id=user_id)
         serializer = ExpenseSerializer(expenses, many=True)
         return Response(serializer.data)
@@ -34,6 +45,9 @@ class ExpenseList(APIView):
 
 
 class ExpenseDetail(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, user_id, index):
         try:
             return Expense.objects.get(id=index, user_id=user_id)
