@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "corsheaders",
     "expense_tracker",
+    "income_tracker",
 ]
 
 CORS_ALLOWED_ORIGINS = [
