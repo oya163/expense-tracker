@@ -6,8 +6,6 @@ import Expense from "@/types/Expense";
 import ExpenseType from "@/types/ExpenseType";
 import ResponseData from "@/types/ResponseData";
 
-import apiClient from "@/http-common";
-
 const store = createStore({
   state: {
     user_expenses: [] as Expense[],

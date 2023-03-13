@@ -1,4 +1,8 @@
 import VueRouter, { Route } from 'vue-router'
+import { Store } from 'vuex'
+
+import Expense from "@/types/Expense";
+import ExpenseType from "@/types/ExpenseType";
 
 /* eslint-disable */
 declare module '*.vue' {
